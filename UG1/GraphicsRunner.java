@@ -1,5 +1,4 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
+//(c) A+ Computer Science//www.apluscompsci.com
 
 //Name -
 //Date -
@@ -21,7 +20,11 @@ public class GraphicsRunner extends JFrame
     
     getContentPane().add(new SmileyFace());
     
-    //add other classes to run them 
+//	getContentPane().add(new Robot());
+//	getContentPane().add(new Shape());
+//	getContentPane().add(new BigHouse());
+
+    //add other classes to run them
     //BigHouse, Robot, or ShapePanel 
     
     setVisible(true);

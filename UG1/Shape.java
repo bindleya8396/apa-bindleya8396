@@ -22,6 +22,10 @@ public class Shape
    {
 		xPos = x;
 		//finish this constructor
+		yPos = y;
+		width = wid;
+		height = ht;
+		color = col;
    }
 
 
@@ -34,6 +38,9 @@ public class Shape
       //    ^
       //  [ :: ]
       //    ()
+	window.setColor(Color.YELLOW);
+	window.drawLine(100, 200, 150, 300);
+	window.drawLine(150, 300, 
 
    }
 
