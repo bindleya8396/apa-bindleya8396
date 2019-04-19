@@ -16,14 +16,29 @@ public class Block implements Locatable
 
   public Block()
   {
-	xPos = 0;
-	yPos = 0;
-	width = 0;
-	height = 0;
+	xPos = 100;
+	yPos = 150;
+	width = 10;
+	height = 10;
   }
 
   //add other Block constructors - x , y , width, height, color
-        
+  public Block(int x, int y) {
+     xPos = x;
+     yPos = y;
+     width = 10;
+     height = 10;
+     color = Color.BLACK;
+   }
+
+  public Block(int x, int y, int w, int h) {
+     xPos = x;
+     yPos = y;
+     width = w;
+     height = h;
+     color = Color.BLACK;
+   }
+   
   public Block(int x, int y, int w, int h, Color col) {
 	xPos = x;
         yPos = y;
@@ -74,30 +89,24 @@ public class Block implements Locatable
 	return color;
   }
 
-  public void draw(Graphics window, Color col)
+  public void draw(Graphics window)
   {
-    //uncomment after you write the set and get methods
-    window.setColor(col);
-    window.fillRect(getX(), getY(), getWidth(), getHeight());
+    draw(window, color);
   }
 
   public void draw(Graphics window, Color col)
   {
-	
-
+    window.setColor(col);
+    window.fillRect(getX(), getY(), getWidth(), getHeight());
   }
    
   public boolean equals(Object obj)
   {
-
-
-
-
-    return false;
+     Block save = (Block)obj;
+     return xPos == save.getX() && yPos == save.getY() && width == save.getWidth() && height == save.getHeight() && color == save.getColor();
   }   
 
-  //add the other get methods
-    
-
   //add a toString() method  - x , y , width, height, color
+     public String toString() {
+     return xPos + " " + yPos + " " + width + " " + height + " " + color;
 }
