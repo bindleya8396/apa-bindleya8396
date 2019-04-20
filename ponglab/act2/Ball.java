@@ -50,17 +50,11 @@ public class Ball extends Block
    public void setYSpeed(int y) {
      ySpeed = y;
    }
-   public int getXSpeed() {
-     return xSpeed;
-   }
-   public int getYSpeed() {
-     return ySpeed;
-   }
 
   public void moveAndDraw(Graphics window)
   {
     //draw a white ball at old ball location
-    draw(window);
+    draw(window, Color.WHITE);
     setX(getX() + xSpeed);
     //setY
     setY(getY() + ySpeed);
@@ -75,12 +69,12 @@ public class Ball extends Block
   }   
 
   //add the get methods
-   public int getX() {
-     return xSpeed;
-   }
-   public int getY() {
-     return ySpeed;
-   }
+  public int getXSpeed() {
+	  return xSpeed;
+  }
+  public int getYSpeed() {
+	  return ySpeed;
+  }
    
   //add a toString() method
     public String toString() {
