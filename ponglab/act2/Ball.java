@@ -22,11 +22,6 @@ public class Ball extends Block
      xSpeed = 3;
      ySpeed = 1;
    }
-   public Ball(int x, int y, int w) {
-     super(x, y, w);
-     xSpeed = 3;
-     ySpeed = 1;
-   }
    public Ball(int x, int y, int w, int h) {
      super(x, y, w, h);
      xSpeed = 3;
@@ -49,16 +44,16 @@ public class Ball extends Block
    }        
      
   //add the set methods
-  public void setXspeed(int x) {
+  public void setXSpeed(int x) {
      xSpeed = x;
    }
-   public void setYspeed(int y) {
+   public void setYSpeed(int y) {
      ySpeed = y;
    }
-   public int getXspeed() {
+   public int getXSpeed() {
      return xSpeed;
    }
-   public int getYspeed() {
+   public int getYSpeed() {
      return ySpeed;
    }
 
@@ -76,7 +71,7 @@ public class Ball extends Block
   public boolean equals(Object obj)
   {
      Ball boll = (Ball)obj;
-     return xSpeed == boll.getXspeed() && ySpeed == boll.getYspeed();
+     return xSpeed == boll.getXSpeed() && ySpeed == boll.getYSpeed();
   }   
 
   //add the get methods
