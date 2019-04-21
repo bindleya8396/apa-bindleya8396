@@ -15,7 +15,7 @@ public class Ball extends Block implements Collidable<Block> {
 		xSpeed = 3;
 		ySpeed = 1;
 	}
-
+	
 	// add the other Ball constructors
 	public Ball(int x, int y) {
 		super(x, y);
@@ -88,15 +88,15 @@ public class Ball extends Block implements Collidable<Block> {
 	}
 
 	public boolean didCollideTop(Block b) {
-		return (getY() <= b.getY() + b.getHeight() + Math.abs(getYSpeed()) 
+		return (getY() <= b.getY() + b.getHeight() + Math.abs(getYSpeed())
 				&& ((getX() >= b.getX() && getX() <= b.getX() + b.getWidth())
 						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth())));
 	}
 
 	public boolean didCollideBottom(Block b) {
-		return (getY() + getHeight() >= b.getY() + Math.abs(getYSpeed()) 
-		&& ((getX() >= b.getX() && getX() <= b.getX() + b.getWidth())
-				|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth())));
+		return (getY() + getHeight() >= b.getY() + Math.abs(getYSpeed())
+				&& ((getX() >= b.getX() && getX() <= b.getX() + b.getWidth())
+						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth())));
 	}
 
 	// add the get methods
