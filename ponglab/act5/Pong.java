@@ -32,20 +32,16 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 	private int paddleHeight = 100;
 	private int paddleWidth = 20;
 
-	private int ballStartX;
-	private int ballStartY;
-	
 	public Pong(int w, int h) {
 		// set up all variables related to the game
-		ballStartX = w/2;
-		ballStartY = h/2;
-		ball = new InvisibleBall(ballStartX, ballStartY);
+		ball = new Ball(w / 2, h / 2);
+		ball.setXSpeed(-3);
 		leftPaddle = new Paddle(padding + wallThickness, h / 2 - paddleHeight / 2, paddleWidth, paddleHeight,
 				Color.RED);
-		leftPaddle.setBounds(padding + wallThickness, h - padding - wallThickness);
+		leftPaddle.setBounds(padding + wallThickness, h - padding - wallThickness, 0, 0);
 		rightPaddle = new Paddle(w - padding - wallThickness - paddleWidth, h / 2 - paddleHeight / 2, paddleWidth,
 				paddleHeight, Color.BLUE);
-		rightPaddle.setBounds(padding + wallThickness, h - padding - wallThickness);
+		rightPaddle.setBounds(padding + wallThickness, h - padding - wallThickness, 0, 0);
 		score = new Score();
 		rightWall = new Wall(w - wallThickness - padding, padding, wallThickness, h - 2 * padding);
 		leftWall = new Wall(padding, padding, wallThickness, h - 2 * padding);
@@ -88,6 +84,7 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 		bottomWall.draw(graphToBack);
 
 		// see if ball hits left wall or right wall
+
 		if (ball.didCollideLeft(leftWall) || ball.didCollideRight(rightWall)) {
 			score.clear(graphToBack);
 
@@ -96,7 +93,10 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 			} else {
 				score.incrementLeftScore();
 			}
-			ball.reset(graphToBack);
+			ball.clear(graphToBack);
+			ball.setPos(200, 200);
+			ball.setXSpeed(3);
+			ball.setYSpeed(1);
 		}
 
 		// see if the ball hits the top or bottom wall

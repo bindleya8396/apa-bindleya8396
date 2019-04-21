@@ -9,58 +9,42 @@ import java.awt.Graphics;
 public class Ball extends Block implements Collidable<Block> {
 	private int xSpeed;
 	private int ySpeed;
-	private int initialXSpeed;
-	private int initialYSpeed;
-	private int initialX;
-	private int initialY;
 
 	public Ball() {
 		super(200, 200);
-		initialX = 200;
-		initialY = 200;
-		initialXSpeed = xSpeed = 3;
-		initialYSpeed = ySpeed = 1;
+		xSpeed = 3;
+		ySpeed = 1;
 	}
-	
+
 	// add the other Ball constructors
 	public Ball(int x, int y) {
 		super(x, y);
-		initialX = x;
-		initialY = y;
-		initialXSpeed = xSpeed = 3;
-		initialYSpeed = ySpeed = 1;
+		xSpeed = 3;
+		ySpeed = 1;
 	}
 
 	public Ball(int x, int y, int w, int h) {
 		super(x, y, w, h);
-		initialX = x;
-		initialY = y;
-		initialXSpeed = xSpeed = 3;
-		initialYSpeed = ySpeed = 1;
+		xSpeed = 3;
+		ySpeed = 1;
 	}
 
 	public Ball(int x, int y, int w, int h, Color col) {
 		super(x, y, w, h, col);
-		initialX = x;
-		initialY = y;
-		initialXSpeed = xSpeed = 3;
-		initialYSpeed = ySpeed = 1;
+		xSpeed = 3;
+		ySpeed = 1;
 	}
 
 	public Ball(int x, int y, int w, int h, int xSpd, int ySpd) {
 		super(x, y, w, h);
-		initialX = x;
-		initialY = y;
-		initialXSpeed = xSpeed = xSpd;
-		initialYSpeed = ySpeed = ySpd;
+		xSpeed = xSpd;
+		ySpeed = ySpd;
 	}
 
 	public Ball(int x, int y, int w, int h, Color col, int xSpd, int ySpd) {
 		super(x, y, w, h, col);
-		initialX = x;
-		initialY = y;
-		initialXSpeed = xSpeed = xSpd;
-		initialYSpeed = ySpeed = ySpd;
+		xSpeed = xSpd;
+		ySpeed = ySpd;
 	}
 
 	// add the set methods
@@ -85,13 +69,6 @@ public class Ball extends Block implements Collidable<Block> {
 	public void clear(Graphics window) {
 		draw(window, Color.WHITE);
 	}
-	
-	public void reset(Graphics window) {
-		clear(window);
-		setPos(initialX, initialY);
-		setXSpeed(initialXSpeed);
-		setYSpeed(initialYSpeed);		
-	}
 
 	public boolean equals(Object obj) {
 		Ball boll = (Ball) obj;
@@ -99,27 +76,27 @@ public class Ball extends Block implements Collidable<Block> {
 	}
 
 	public boolean didCollideLeft(Block b) {
-		return (getX() <= b.getX() + b.getWidth() + Math.abs(getXSpeed())
+		return (getX() - Math.abs(getXSpeed()) <= b.getX() + b.getWidth() && getX() + getWidth() >= b.getX() + b.getWidth())
 				&& ((getY() >= b.getY() && getY() <= b.getY() + b.getHeight())
-						|| (getY() + getHeight() >= b.getY() && getY() + getHeight() < b.getY() + b.getHeight())));
+						|| (getY() + getHeight() >= b.getY() && getY() + getHeight() < b.getY() + b.getHeight()));
 	}
 
 	public boolean didCollideRight(Block b) {
-		return (getX() + getWidth() >= b.getX() + Math.abs(getXSpeed())
+		return (getX() + getWidth() + Math.abs(getXSpeed()) >= b.getX() && getX() <= b.getX())
 				&& ((getY() >= b.getY() && getY() <= b.getY() + b.getHeight())
-						|| (getY() + getHeight() >= b.getY() && getY() + getHeight() < b.getY() + b.getHeight())));
+						|| (getY() + getHeight() >= b.getY() && getY() + getHeight() < b.getY() + b.getHeight()));
 	}
 
 	public boolean didCollideTop(Block b) {
-		return (getY() <= b.getY() + b.getHeight() + Math.abs(getYSpeed())
+		return (getY() - Math.abs(getYSpeed()) <= b.getY() + b.getHeight() && getY() + getHeight() >= b.getY() + b.getHeight())
 				&& ((getX() >= b.getX() && getX() <= b.getX() + b.getWidth())
-						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth())));
+						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth()));
 	}
 
 	public boolean didCollideBottom(Block b) {
-		return (getY() + getHeight() >= b.getY() + Math.abs(getYSpeed())
+		return (getY() + getHeight() + Math.abs(getYSpeed()) >= b.getY() && getY() <= b.getY())
 				&& ((getX() >= b.getX() && getX() <= b.getX() + b.getWidth())
-						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth())));
+						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth()));
 	}
 
 	// add the get methods

@@ -15,7 +15,7 @@ public class Ball extends Block implements Collidable<Block> {
 		xSpeed = 3;
 		ySpeed = 1;
 	}
-	
+
 	// add the other Ball constructors
 	public Ball(int x, int y) {
 		super(x, y);
@@ -76,27 +76,27 @@ public class Ball extends Block implements Collidable<Block> {
 	}
 
 	public boolean didCollideLeft(Block b) {
-		return (getX() <= b.getX() + b.getWidth() + Math.abs(getXSpeed())
+		return (getX() - Math.abs(getXSpeed()) <= b.getX() + b.getWidth() && getX() + getWidth() >= b.getX() + b.getWidth())
 				&& ((getY() >= b.getY() && getY() <= b.getY() + b.getHeight())
-						|| (getY() + getHeight() >= b.getY() && getY() + getHeight() < b.getY() + b.getHeight())));
+						|| (getY() + getHeight() >= b.getY() && getY() + getHeight() < b.getY() + b.getHeight()));
 	}
 
 	public boolean didCollideRight(Block b) {
-		return (getX() + getWidth() >= b.getX() + Math.abs(getXSpeed())
+		return (getX() + getWidth() + Math.abs(getXSpeed()) >= b.getX() && getX() <= b.getX())
 				&& ((getY() >= b.getY() && getY() <= b.getY() + b.getHeight())
-						|| (getY() + getHeight() >= b.getY() && getY() + getHeight() < b.getY() + b.getHeight())));
+						|| (getY() + getHeight() >= b.getY() && getY() + getHeight() < b.getY() + b.getHeight()));
 	}
 
 	public boolean didCollideTop(Block b) {
-		return (getY() <= b.getY() + b.getHeight() + Math.abs(getYSpeed())
+		return (getY() - Math.abs(getYSpeed()) <= b.getY() + b.getHeight() && getY() + getHeight() >= b.getY() + b.getHeight())
 				&& ((getX() >= b.getX() && getX() <= b.getX() + b.getWidth())
-						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth())));
+						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth()));
 	}
 
 	public boolean didCollideBottom(Block b) {
-		return (getY() + getHeight() >= b.getY() + Math.abs(getYSpeed())
+		return (getY() + getHeight() + Math.abs(getYSpeed()) >= b.getY() && getY() <= b.getY())
 				&& ((getX() >= b.getX() && getX() <= b.getX() + b.getWidth())
-						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth())));
+						|| (getX() + getWidth() >= b.getX() && getX() + getWidth() < b.getX() + b.getWidth()));
 	}
 
 	// add the get methods
