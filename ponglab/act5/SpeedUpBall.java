@@ -1,3 +1,4 @@
+
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
@@ -6,59 +7,73 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-class SpeedUpBall extends Ball
-{
+class SpeedUpBall extends Ball {
 
-  //instance variables
+	// instance variables
 
-  public SpeedUpBall()
-  {
+	public SpeedUpBall() {
+		super();
+	}
 
+	public SpeedUpBall(int x, int y) {
+		super(x, y);
+	}
 
-  }
+	public SpeedUpBall(int x, int y, int w, int h) {
+		super(x, y, w, h);
+	}
 
-  public SpeedUpBall(int x, int y)
-  {
+	public SpeedUpBall(int x, int y, int w, int h, int xSpd, int ySpd) {
+		super(x, y, w, h, xSpd, ySpd);
+	}
 
+	public SpeedUpBall(int x, int y, int w, int h, Color col, int xSpd, int ySpd) {
+		super(x, y, w, h, col, xSpd, ySpd);
+	}
 
-  }
+	private void speedUp() {
+		if (getXSpeed() > 0) {
+			setXSpeed(getXSpeed() + 1);
+		} else {
+			setXSpeed(getXSpeed() - 1);
+		}
 
+		if (getYSpeed() > 0) {
+			setYSpeed(getYSpeed() + 1);
+		} else {
+			setYSpeed(getYSpeed() - 1);
+		}
+	}
 
-  public SpeedUpBall(int x, int y, int xSpd, int ySpd)
-  {
+	public boolean didCollideLeft(Block b) {
+		boolean collided = super.didCollideLeft(b);
+		if (collided) {
+			speedUp();
+		}
+		return collided;
+	}
 
+	public boolean didCollideRight(Block b) {
+		boolean collided = super.didCollideRight(b);
+		if (collided) {
+			speedUp();
+		}
+		return collided;
+	}
 
-  }
+	public boolean didCollideTop(Block b) {
+		boolean collided = super.didCollideTop(b);
+		if (collided) {
+			speedUp();
+		}
+		return collided;
+	}
 
-  public SpeedUpBall(int x, int y, int wid, int ht, int xSpd, int ySpd)
-  {
-
-
-  }
-
-
-  public SpeedUpBall(int x, int y, int wid, int ht, Color col, int xSpd, int ySpd)
-  {
-
-
-
-
-  }
-
-  public void setXSpeed( int xSpd )
-  {
-
-
-
-
-  }
-
-  public void setYSpeed( int ySpd )
-  {
-
-
-
-
-  }
+	public boolean didCollideBottom(Block b) {
+		boolean collided = super.didCollideBottom(b);
+		if (collided) {
+			speedUp();
+		}
+		return collided;
+	}
 }
-

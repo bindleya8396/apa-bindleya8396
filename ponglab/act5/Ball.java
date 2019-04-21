@@ -9,42 +9,58 @@ import java.awt.Graphics;
 public class Ball extends Block implements Collidable<Block> {
 	private int xSpeed;
 	private int ySpeed;
+	private int initialXSpeed;
+	private int initialYSpeed;
+	private int initialX;
+	private int initialY;
 
 	public Ball() {
 		super(200, 200);
-		xSpeed = 3;
-		ySpeed = 1;
+		initialX = 200;
+		initialY = 200;
+		initialXSpeed = xSpeed = 3;
+		initialYSpeed = ySpeed = 1;
 	}
 	
 	// add the other Ball constructors
 	public Ball(int x, int y) {
 		super(x, y);
-		xSpeed = 3;
-		ySpeed = 1;
+		initialX = x;
+		initialY = y;
+		initialXSpeed = xSpeed = 3;
+		initialYSpeed = ySpeed = 1;
 	}
 
 	public Ball(int x, int y, int w, int h) {
 		super(x, y, w, h);
-		xSpeed = 3;
-		ySpeed = 1;
+		initialX = x;
+		initialY = y;
+		initialXSpeed = xSpeed = 3;
+		initialYSpeed = ySpeed = 1;
 	}
 
 	public Ball(int x, int y, int w, int h, Color col) {
 		super(x, y, w, h, col);
-		xSpeed = 3;
-		ySpeed = 1;
+		initialX = x;
+		initialY = y;
+		initialXSpeed = xSpeed = 3;
+		initialYSpeed = ySpeed = 1;
 	}
 
 	public Ball(int x, int y, int w, int h, int xSpd, int ySpd) {
 		super(x, y, w, h);
-		xSpeed = xSpd;
-		ySpeed = ySpd;
+		initialX = x;
+		initialY = y;
+		initialXSpeed = xSpeed = xSpd;
+		initialYSpeed = ySpeed = ySpd;
 	}
 
 	public Ball(int x, int y, int w, int h, Color col, int xSpd, int ySpd) {
 		super(x, y, w, h, col);
-		xSpeed = xSpd;
-		ySpeed = ySpd;
+		initialX = x;
+		initialY = y;
+		initialXSpeed = xSpeed = xSpd;
+		initialYSpeed = ySpeed = ySpd;
 	}
 
 	// add the set methods
@@ -68,6 +84,13 @@ public class Ball extends Block implements Collidable<Block> {
 
 	public void clear(Graphics window) {
 		draw(window, Color.WHITE);
+	}
+	
+	public void reset(Graphics window) {
+		clear(window);
+		setPos(initialX, initialY);
+		setXSpeed(initialXSpeed);
+		setYSpeed(initialYSpeed);		
 	}
 
 	public boolean equals(Object obj) {

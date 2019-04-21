@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.lang.*;
 
 public class Pong extends Canvas implements KeyListener, Runnable {
-	private BlinkyBall ball;
+	private Ball ball;
 	private Paddle leftPaddle;
 	private Paddle rightPaddle;
 	private Wall rightWall;
@@ -32,10 +32,14 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 	private int paddleHeight = 100;
 	private int paddleWidth = 20;
 
+	private int ballStartX;
+	private int ballStartY;
+	
 	public Pong(int w, int h) {
 		// set up all variables related to the game
-		ball = new BlinkyBall(w / 2, h / 2);
-		ball.setXSpeed(-3);
+		ballStartX = w/2;
+		ballStartY = h/2;
+		ball = new SpeedUpBall(ballStartX, ballStartY);
 		leftPaddle = new Paddle(padding + wallThickness, h / 2 - paddleHeight / 2, paddleWidth, paddleHeight,
 				Color.RED);
 		leftPaddle.setBounds(padding + wallThickness, h - padding - wallThickness);
@@ -84,10 +88,7 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 		bottomWall.draw(graphToBack);
 
 		// see if ball hits left wall or right wall
-
 		if (ball.didCollideLeft(leftWall) || ball.didCollideRight(rightWall)) {
-			ball.setXSpeed(0);
-			ball.setYSpeed(0);
 			score.clear(graphToBack);
 
 			if (ball.didCollideLeft(leftWall)) {
@@ -95,10 +96,7 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 			} else {
 				score.incrementLeftScore();
 			}
-			ball.clear(graphToBack);
-			ball.setPos(200, 200);
-			ball.setXSpeed(3);
-			ball.setYSpeed(1);
+			ball.reset(graphToBack);
 		}
 
 		// see if the ball hits the top or bottom wall
