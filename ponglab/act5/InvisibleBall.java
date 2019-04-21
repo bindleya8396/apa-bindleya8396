@@ -32,7 +32,7 @@ public class InvisibleBall extends Ball {
 
 	private void turnInvisible() {
 		int z = (int) (Math.random() * 100);
-		if (z > 95) {
+		if (z > 97) {
 			if(getColor() == Color.white) {
 				setColor(initialColor);
 			} else {

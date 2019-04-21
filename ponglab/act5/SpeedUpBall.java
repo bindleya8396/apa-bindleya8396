@@ -32,13 +32,13 @@ class SpeedUpBall extends Ball {
 	}
 
 	private void speedUp() {
-		if (getXSpeed() > 0) {
+		if (getXSpeed() > 0 && Math.abs(getXSpeed()) < 6) {
 			setXSpeed(getXSpeed() + 1);
 		} else {
 			setXSpeed(getXSpeed() - 1);
 		}
 
-		if (getYSpeed() > 0) {
+		if (getYSpeed() > 0 && Math.abs(getYSpeed()) < 6) {
 			setYSpeed(getYSpeed() + 1);
 		} else {
 			setYSpeed(getYSpeed() - 1);
