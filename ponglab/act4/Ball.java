@@ -35,10 +35,10 @@ public class Ball extends Block implements Collidable<Block> {
 		ySpeed = 1;
 	}
 
-	public Ball(int x, int y, int w, int h, Color col, int xSpd) {
-		super(x, y, w, h, col);
+	public Ball(int x, int y, int w, int h, int xSpd, int ySpd) {
+		super(x, y, w, h);
 		xSpeed = xSpd;
-		ySpeed = 1;
+		ySpeed = ySpd;
 	}
 
 	public Ball(int x, int y, int w, int h, Color col, int xSpd, int ySpd) {
