@@ -86,8 +86,6 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 		// see if ball hits left wall or right wall
 
 		if (ball.didCollideLeft(leftWall) || ball.didCollideRight(rightWall)) {
-			ball.setXSpeed(0);
-			ball.setYSpeed(0);
 			score.clear(graphToBack);
 
 			if (ball.didCollideLeft(leftWall)) {
