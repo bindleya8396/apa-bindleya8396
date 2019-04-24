@@ -1,3 +1,4 @@
+
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
@@ -5,28 +6,25 @@
 import javax.swing.JFrame;
 import java.awt.Component;
 
-public class TheGame extends JFrame
-{
-  private static final int WIDTH = 800;
-  private static final int HEIGHT = 600;
+public class TheGame extends JFrame {
+	private static final int WIDTH = 800;
+	private static final int HEIGHT = 600;
 
-  public TheGame()
-  {
-    super("PONG");
-    setSize(WIDTH,HEIGHT);
+	public TheGame() {
+		super("PONG");
+		setSize(WIDTH, HEIGHT);
 
-    Pong game = new Pong();
+		Pong game = new Pong(WIDTH, HEIGHT);
 
-    ((Component)game).setFocusable(true);
-    getContentPane().add(game);
+		((Component) game).setFocusable(true);
+		getContentPane().add(game);
 
-    setVisible(true);
+		setVisible(true);
 
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  }
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 
-  public static void main( String args[] )
-  {
-    TheGame run = new TheGame();
-  }
+	public static void main(String args[]) {
+		TheGame run = new TheGame();
+	}
 }

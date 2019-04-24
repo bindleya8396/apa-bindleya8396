@@ -17,6 +17,7 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 {
   private Ball ball;
   private Paddle leftPaddle;
+  private Paddle rightPaddle;
   private boolean[] keys;               //keeps track of what keys are pressed
 
   public PaddleTestTwo()
@@ -25,19 +26,13 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 
 
     //instantiate a Ball
-                
-                
+	  ball = new Ball();
                 
     //instantiate a left Paddle
-                
-                
-                
+	  leftPaddle = new Paddle(100, 200, 20, 100, Color.RED);              
                 
     //instantiate a right Paddle
-                
-                
-                
-
+	  rightPaddle = new Paddle(680, 200, 20, 100, Color.BLUE);
 
     keys = new boolean[5];
 
@@ -59,13 +54,14 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
   {
     ball.moveAndDraw(window);
     leftPaddle.draw(window);
+    rightPaddle.draw(window);
 
-    if (!(ball.getX()>=10 && ball.getX()<=550))
+    if(!(ball.getX()>=10 && ball.getX()<=790 - ball.getWidth()))
     {
       ball.setXSpeed(-ball.getXSpeed());
     }
 
-    if (!(ball.getY()>=10 && ball.getY()<=450))
+    if(!(ball.getY()>=10 && ball.getY()<=590 - ball.getHeight()))
     {
       ball.setYSpeed(-ball.getYSpeed());
     }
@@ -78,16 +74,16 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
     if (keys[1])
     {
       //move left paddle down and draw it on the window
-
+    	leftPaddle.moveDownAndDraw(window);
 
     }
     if (keys[2])
     {
-
+    	rightPaddle.moveUpAndDraw(window);
     }
     if (keys[3])
     {
-
+    	rightPaddle.moveDownAndDraw(window);
     }
   }
 
