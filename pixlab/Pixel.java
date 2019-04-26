@@ -94,6 +94,9 @@ public class Pixel
   }
     
   
+  
+  
+  
   /**
    * Method to get the amount of red at this pixel.  It will be
    * from 0-255 with 0 being no red and 255 being as much red as
