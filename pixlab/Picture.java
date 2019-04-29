@@ -457,15 +457,17 @@ public class Picture extends SimplePicture
   
   public void blur(int x, int y, int w, int h) {
   	Pixel rightPixel = null;
+	Pixel leftPixel = null;
 	Pixel currentPixel = null;
 	Pixel[][] pixels = this.getPixels2D();
-	for (int row = y; row < y + h; row++) {
-		for (int col = x; col < x + w; col++) {
+	for (int row = x; row < x + w; row++) {
+		for (int col = y; col < y + h; col++) {
 			rightPixel = pixels[row][col + 1];
+			leftPixel = pixels[row][col - 1];
 			currentPixel = pixels[row][col];
-			currentPixel.setRed((currentPixel.getRed() + rightPixel.getRed())/2);
-			currentPixel.setGreen((currentPixel.getGreen() + rightPixel.getGreen())/2);
-			currentPixel.setBlue((currentPixel.getBlue() + rightPixel.getBlue())/2);
+			currentPixel.setRed((leftPixel.getRed() + rightPixel.getRed())/2);
+			currentPixel.setGreen((leftPixel.getGreen() + rightPixel.getGreen())/2);
+			currentPixel.setBlue((leftPixel.getBlue() + rightPixel.getBlue())/2);
 		}
 	}
   }
