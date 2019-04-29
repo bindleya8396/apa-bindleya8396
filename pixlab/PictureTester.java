@@ -150,6 +150,14 @@ public class PictureTester
     swan.edgeDetection2(10);
     swan.explore();
   }
+	
+  public static void testBlur(int x, int y, int w, int h, int n) {
+	  Picture redMoto = new Picture("redMotorcycle.jpg");
+	  for (int i = 0; i < n; i++) {
+		  redMoto.blur(x,y,w,h);
+	  }
+	  redMoto.explore();
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -185,5 +193,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+	  testBlur(180,160,25,25,10);
   }
 }
