@@ -351,7 +351,6 @@ public class Picture extends SimplePicture
 	    }   
   }
 
-<<<<<<< HEAD
   public void blur(int x, int y, int w, int h) {
 	Pixel rightPixel = null;
 	Pixel leftPixel = null;
@@ -373,7 +372,7 @@ public class Picture extends SimplePicture
 	}
   }
 
-=======
+
   public void copyTwo(Picture fromPic, int startRow, int endRow, int startCol, int endCol) {
 	    Pixel fromPixel = null;
 	    Pixel toPixel = null;
@@ -396,7 +395,6 @@ public class Picture extends SimplePicture
 	    }  
   }
   
->>>>>>> 64b039c57725ec7478a4c7284b5151ef716b7528
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
@@ -477,27 +475,6 @@ public class Picture extends SimplePicture
           topPixel.setColor(Color.WHITE);
       }
     }
-  }
-  
-  public void blur(int x, int y, int w, int h) {
-  	Pixel rightPixel = null;
-	Pixel leftPixel = null;
-	Pixel topPixel = null;
-	Pixel bottomPixel = null;
-	Pixel currentPixel = null;
-	Pixel[][] pixels = this.getPixels2D();
-	for (int row = x; row < x + w; row++) {
-		for (int col = y; col < y + h; col++) {
-			rightPixel = pixels[row][col + 1];
-			leftPixel = pixels[row][col - 1];
-			topPixel = pixels[row + 1][col];
-			bottomPixel = pixels[row - 1][col];
-			currentPixel = pixels[row][col];
-			currentPixel.setRed((leftPixel.getRed() + rightPixel.getRed() + topPixel.getRed() + bottomPixel.getRed())/4);
-			currentPixel.setGreen((leftPixel.getGreen() + rightPixel.getGreen() + topPixel.getGreen() + bottomPixel.getGreen())/4);
-			currentPixel.setBlue((leftPixel.getBlue() + rightPixel.getBlue() + topPixel.getBlue() + bottomPixel.getBlue())/4);
-		}
-	}
   }
   
   /* Main method for testing - each class in Java can have a main 

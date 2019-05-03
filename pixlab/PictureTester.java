@@ -158,14 +158,6 @@ public class PictureTester
     swan.edgeDetection2(10);
     swan.explore();
   }
-	
-  public static void testBlur(int x, int y, int w, int h, int n) {
-	  Picture redMoto = new Picture("redMotorcycle.jpg");
-	  for (int i = 0; i < n; i++) {
-		  redMoto.blur(x,y,w,h);
-	  }
-	  redMoto.explore();
-  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -174,11 +166,8 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-<<<<<<< HEAD
-//    testZeroBlue();
-=======
     //testZeroBlue();
->>>>>>> 64b039c57725ec7478a4c7284b5151ef716b7528
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -205,10 +194,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-<<<<<<< HEAD
       testBlur(180, 160, 25, 25, 10);
-=======
-	  testBlur(180,160,25,25,10);
->>>>>>> 64b039c57725ec7478a4c7284b5151ef716b7528
   }
 }

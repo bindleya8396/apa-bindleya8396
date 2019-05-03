@@ -19,7 +19,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
   private Ship ship;
   private Alien alienOne;
   private Alien alienTwo;
-
+  private Ammo ammo;
+  
   /* uncomment once you are ready for this part
    *
    private AlienHorde horde;
@@ -36,6 +37,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     keys = new boolean[5];
 
     //instantiate other instance variables
+    ship = new Ship(300,300,50,50,10);
+    alienOne = new Alien(300, 100, 50, 50, 10);
+    alienTwo = new Alien(400, 100, 50, 50, 10);
+    ammo = new Ammo(300, 300, 10);
     //Ship, Alien
 
     this.addKeyListener(this);
@@ -67,12 +72,30 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     graphToBack.drawString("StarFighter ", 25, 50 );
     graphToBack.setColor(Color.BLACK);
     graphToBack.fillRect(0,0,800,600);
+    
+    ship.draw(graphToBack);
+    alienOne.draw(graphToBack);
+    alienTwo.draw(graphToBack);
+    ammo.draw(graphToBack);
 
     if(keys[0] == true)
     {
       ship.move("LEFT");
     }
+    if(keys[1] == true) {
+    	ship.move("RIGHT");
+    }
+    if(keys[2] == true) {
+    	ship.move("UP");
+    }
+    if(keys[3] == true) {
+    	ship.move("DOWN");
+    }
 
+    if(keys[4] == true) {
+    	ammo.draw(graphToBack);
+    	ammo.move("SPACE");
+    }
     //add code to move Ship, Alien, etc.
 
 
