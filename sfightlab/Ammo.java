@@ -11,7 +11,8 @@ import javax.imageio.ImageIO;
 public class Ammo extends MovingThing
 {
   private int speed;
-
+  private Color color;
+  
   public Ammo()
   {
     this(0,0,0);
@@ -37,18 +38,16 @@ public class Ammo extends MovingThing
   {
     return speed;
   }
-
-  public void draw( Graphics window )
-  {
-    window.setColor(Color.white);
-    window.fillRect(getX(), getY(), getWidth(), getHeight());
+      
+  public void draw(Graphics window) {
+	    window.setColor(Color.white);
+	    window.fillRect(getX(), getY(), getWidth(), getHeight());	  
   }
-        
-        
+  
   public void move( String direction )
   {
 	    if(direction.equals("SPACE")) {
-	    	setY(getY() + speed);
+	    	setY(getY() - speed);
 	    }
   }
 

@@ -70,10 +70,10 @@ public class Ship extends MovingThing
     	setX(getX() + speed);
     }
     if(direction.equals("UP")) {
-    	setY(getY() + speed);
+    	setY(getY() - speed);
     }
     if(direction.equals("DOWN")) {
-    	setY(getY() - speed);
+    	setY(getY() + speed);
     }
   }
 
