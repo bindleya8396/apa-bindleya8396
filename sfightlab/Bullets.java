@@ -35,13 +35,18 @@ public class Bullets
   public void moveEmAll()
   {
 	  for(Ammo bullet : ammo) {
-		  bullet.move("SPACE");
+		  bullet.move("UP");
 	  }
   }
 
   public void cleanEmUp()
   {
-	  
+	  for(int i = ammo.size() - 1; i >= 0; i--) {
+		  Ammo bullet = ammo.get(i);
+		  if(bullet.getY() <= 0) {
+			  ammo.remove(bullet);
+		  }
+	  }
   }
 
   public List<Ammo> getList()
@@ -49,8 +54,12 @@ public class Bullets
     return ammo;
   }
 
+  public int getSize() {
+	  return ammo.size();
+  }
+  
   public String toString()
   {
-    return "" + ammo;
+    return "Number of bullets left: " + ammo.size();
   }
 }

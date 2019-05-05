@@ -13,7 +13,8 @@ public class Alien extends MovingThing
 {
   private int speed;
   private Image image;
-
+ 
+  
   public Alien()
   {
     this(0,0,30,30,0);
@@ -21,18 +22,16 @@ public class Alien extends MovingThing
 
   public Alien(int x, int y)
   {
-    super(x,y);
+    this(x,y,30,30,0);
   }
 
   public Alien(int x, int y, int s)
   {
-    super(x,y);
-    speed = s;
+    this(x,y,30,30,s);
   }
   
   public Alien(int x, int y, int w, int h) {
-	  super(x, y, w, h);
-	  speed = 10;
+	  this(x, y, w, h,0);
   }
 
   public Alien(int x, int y, int w, int h, int s)
@@ -46,7 +45,7 @@ public class Alien extends MovingThing
     }
     catch(Exception e)
     {
-      //feel free to do something here
+      System.out.print("Error constructing Alien, creating the image: " + e.getMessage());
     }
   }
 
@@ -62,11 +61,15 @@ public class Alien extends MovingThing
 
   public void move(String direction)
   {
-	if(direction.equals("UP")) {
-		 setX(getX() - speed);
-	 } else {
-		 setX(getX() + speed);
-	 }
+	  if(direction.equals("LEFT")) {
+	    	setX(getX() - speed);
+	    } else if(direction.equals("RIGHT")) {
+	    	setX(getX() + speed);
+	    } else if(direction.equals("UP")) {
+	    	setY(getY() - speed);
+	    } else if(direction.equals("DOWN")) {
+	    	setY(getY() + speed);
+	    }
   }
 
   public void draw( Graphics window )
@@ -76,6 +79,6 @@ public class Alien extends MovingThing
 
   public String toString()
   {
-    return "";
+	    return super.toString() + " " + getSpeed();  
   }
 }

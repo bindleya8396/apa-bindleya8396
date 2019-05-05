@@ -21,18 +21,16 @@ public class Ship extends MovingThing
 
   public Ship(int x, int y)
   {
-    super(x,y);
+    this(x,y,10,10,10);
   }
 
   public Ship(int x, int y, int s)
   {
-    super(x,y);
-    speed = s;
+    this(x,y,10,10,s);
   }
 
   public Ship(int x, int y, int w, int h) {
-	  super(x, y, w, h);
-	  speed = 10;
+	  this(x, y, w, h,10);
   }
   
   public Ship(int x, int y, int w, int h, int s)
@@ -47,6 +45,7 @@ public class Ship extends MovingThing
     catch(Exception e)
     {
       //feel free to do something here
+    	System.out.print("Error constructing Ship, creating the image: " + e.getMessage());
     }
   }
 
@@ -63,18 +62,15 @@ public class Ship extends MovingThing
 
   public void move(String direction)
   {
-    if(direction.equals("LEFT")) {
-    	setX(getX() - speed);
-    }
-    if(direction.equals("RIGHT")) {
-    	setX(getX() + speed);
-    }
-    if(direction.equals("UP")) {
-    	setY(getY() - speed);
-    }
-    if(direction.equals("DOWN")) {
-    	setY(getY() + speed);
-    }
+	  if(direction.equals("LEFT")) {
+	    	setX(getX() - speed);
+	    } else if(direction.equals("RIGHT")) {
+	    	setX(getX() + speed);
+	    } else if(direction.equals("UP")) {
+	    	setY(getY() - speed);
+	    } else if(direction.equals("DOWN")) {
+	    	setY(getY() + speed);
+	    }
   }
 
   public void draw( Graphics window )
@@ -84,6 +80,6 @@ public class Ship extends MovingThing
 
   public String toString()
   {
-    return super.toString() + getSpeed();
+    return super.toString() + " " + getSpeed();
   }
 }

@@ -20,7 +20,7 @@ public class Ammo extends MovingThing
 
   public Ammo(int x, int y)
   {
-    super(x,y);
+    this(x,y,0);
   }
 
   public Ammo(int x, int y, int s)
@@ -40,19 +40,21 @@ public class Ammo extends MovingThing
   }
       
   public void draw(Graphics window) {
-	    window.setColor(Color.white);
+	    window.setColor(Color.yellow);
 	    window.fillRect(getX(), getY(), getWidth(), getHeight());	  
   }
   
   public void move( String direction )
   {
-	    if(direction.equals("SPACE")) {
+	    if(direction.equals("UP")) {
 	    	setY(getY() - speed);
+	    } else if(direction.equals("DOWN")) {
+	    	setY(getY() + speed);
 	    }
   }
 
   public String toString()
   {
-    return "";
+    return super.toString() + " " + getSpeed();
   }
 }
