@@ -36,19 +36,23 @@ public class DealerTestOne
     if(playerTotal>21&&dealerTotal<=21)
     {
       out.println("\nDealer wins - Player busted!");
+      dealer.setWinCount(dealer.getWinCount()+1);
     }
     else if(playerTotal<=21&&dealerTotal>21)
     {
       out.println("\nPlayer wins - Dealer busted!");
+      player.setWinCount(dealer.getWinCount()+1);
     }
     else if(playerTotal>21&&dealerTotal>21){
       out.println("Both players bust!");
     }
     else if(playerTotal<dealerTotal){
       out.println("\nDealer has bigger hand value!");
+      dealer.setWinCount(dealer.getWinCount()+1);
     }
     else{
       out.println("\nPlayer has bigger hand value!");
+      player.setWinCount(dealer.getWinCount()+1);
     }                                   
   }
 }
