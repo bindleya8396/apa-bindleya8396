@@ -5,9 +5,9 @@ import java.util.concurrent.Executors;
 
 public class TicTacToeServer {
 	public static void main(String[] args) throws Exception {
-		try (var listener = new ServerSocket(58901)) {
+		try (ServerSocket listener = new ServerSocket(58901)) {
 			System.out.println("Tic Tac Toe Server is Running...");
-			var pool = Executors.newFixedThreadPool(200);
+			ExecutorService pool = Executors.newFixedThreadPool(200);
 			while (true) {
 				Game game = new Game();
 				pool.execute(game.new Player(listener.accept(), 'X'));
@@ -24,7 +24,7 @@ class Game {
 	
 	public boolean hasWinner() {
 		return (board[0] != null && board[0] == board[1] && board[0] == board[2])
-				|| (board[3] != null && board[3] == board[4] && board[3] == board[5])
+		    || (board[3] != null && board[3] == board[4] && board[3] == board[5])
 	            || (board[6] != null && board[6] == board[7] && board[6] == board[8])
 	            || (board[0] != null && board[0] == board[3] && board[0] == board[6])
 	            || (board[1] != null && board[1] == board[4] && board[1] == board[7])
@@ -91,7 +91,7 @@ class Game {
 		
 		private void processCommands() {
 			while (input.hasNextLine()) {
-				var command = input.nextLine();
+				String command = input.nextLine();
 				if(command.startsWith("QUIT") ) {
 					return;
 				} else if (command.startsWith("MOVE")) {
